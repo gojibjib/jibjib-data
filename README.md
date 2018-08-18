@@ -37,6 +37,7 @@ Start the container:
 
 ```
 docker run -d \
+    --entrypoint /initdb/docker-entrypoint.sh \
     -e ROOT_USER=root \
     -e ROOT_PW=root \
     -e READ_USER=read \
