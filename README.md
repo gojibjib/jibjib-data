@@ -33,11 +33,14 @@ A custom `docker-entrypoint.sh` is used to configure the JibJib database. It wil
 
 When no database is present and the environment variables are passed to the container, a root user, as well as read-only user on the `DB` database, will be created. Also, the during image build copied data file will be inserted into the database. You can also mount a different `mongod.conf`, if wished.
 
-Start the container:
+You can persist the database with bind mounts or named volumes.
+
+To start the container, run:
 
 ```
 docker run -d \
     --entrypoint /initdb/docker-entrypoint.sh \
+    -v $(pwd)/db:/data/db \
     -e ROOT_USER=root \
     -e ROOT_PW=root \
     -e READ_USER=read \
