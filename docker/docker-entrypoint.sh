@@ -14,7 +14,7 @@ function cleanup {
 }
 
 # Only run routine if no DB present
-if [ -z $(ls -A $DATA_DIR)]; then
+if [ -z $(ls -A $DATA_DIR) ]; then
     echo "No database found in $DATA_DIR , running JibJib init routine..."
 
     # Check if necessary ennvironment variables have been set
@@ -49,6 +49,6 @@ if [ -z $(ls -A $DATA_DIR)]; then
     echo "Mongo init routine finished successfully"
     cleanup
     sleep 4
-
-    exec "$@"
 fi
+
+exec "$@"
