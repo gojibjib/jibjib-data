@@ -7,14 +7,8 @@ DATA_DIR="/data/db"
 INIT_JS="init_db.js"
 INIT_SH="setup.sh" 
 
-# Security cleanup
-function cleanup {
-    rm $INIT_JS $INIT_SH
-    unset $ROOT_USER $ROOT_PW $DB $READ_USER $READ_PW
-}
-
 # Only run routine if no DB present
-if [ -z $(ls -A $DATA_DIR) ]; then
+if [ ! $(ls -A $DATA_DIR) ]; then
     echo "No database found in $DATA_DIR , running JibJib init routine..."
 
     # Check if necessary ennvironment variables have been set
@@ -47,8 +41,6 @@ if [ -z $(ls -A $DATA_DIR) ]; then
     kill $(pgrep mongo)
 
     echo "Mongo init routine finished successfully"
-    cleanup
-    sleep 4
 fi
 
 exec "$@"
