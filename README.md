@@ -48,3 +48,5 @@ docker run -d \
     -e DB=birds \
     jibjib-data
 ```
+
+The `READ_USER` and `READ_PW` values are used by [jibjib-api](https://github.com/gojibjib/jibjib-api) to connect to the database. If you run jibjib-data locally and use the values from above, you need to start [jibjib-api](https://github.com/gojibjib/jibjib-api) with the environment variable `JIBJIB_DB_URL=read:read@localhost/birds`.
